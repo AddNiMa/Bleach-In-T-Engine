@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using TEngine;
@@ -12,7 +12,7 @@ namespace GameLogic
     class UITest : UIWindow
     {
         public static int a = 1;
-        #region ½Å±¾¹¤¾ßÉú³ÉµÄ´úÂë
+        #region è„šæœ¬å·¥å…·ç”Ÿæˆçš„ä»£ç 
         private Image m_imgHead;
         private Button m_btnTestButton;
         protected override void ScriptGenerator()
@@ -23,13 +23,13 @@ namespace GameLogic
         }
         #endregion
 
-        #region ÊÂ¼ş
+        #region äº‹ä»¶
         private async UniTaskVoid OnClickTestButtonBtn()
         {
-            //Õ¹Ê¾Ç°Ç°³¡¾°ÀïÃæµÄUI
+            //å±•ç¤ºå‰å‰åœºæ™¯é‡Œé¢çš„UI
             // GameModule.UI.CloseUI<UITest>();
             // SaySomeThings();
-            //¸ù¾İÅäÖÃ±í»ñÈ¡;
+            //æ ¹æ®é…ç½®è¡¨è·å–;
             GameModule.NetWork.StartNetWork("127.0.0.1", 7718);
             GameModule.Procedure.RestartProcedure(new OnEnterLoginSceneProcedure());
 
@@ -40,7 +40,7 @@ namespace GameLogic
             //    if (a == 10)
             //    {
             //    }
-            //    Log.Info($"ÊÂ¼ş{a}");
+            //    Log.Info($"äº‹ä»¶{a}");
             //},4,false);
             //await UniTask.Yield();
         }
@@ -48,32 +48,32 @@ namespace GameLogic
 
         void LoadAsset()
         {
-            ////Í¬²½¼ÓÔØ¡£
+            ////åŒæ­¥åŠ è½½ã€‚
             //GameModule.Resource.LoadAsset<SkillDisplayData>(location);
 
-            ////Òì²½¼ÓÔØ¡£
+            ////å¼‚æ­¥åŠ è½½ã€‚
             //GameModule.Resource.LoadAssetAsync<SkillDisplayData>(location, OnLoadSuccess);
             //private void OnLoadSuccess(AssetOperationHandle assetOperationHandle) { }
 
-            ////Ê¹ÓÃUniTaskÒì²½¼ÓÔØ¡£
+            ////ä½¿ç”¨UniTaskå¼‚æ­¥åŠ è½½ã€‚
             //await GameModule.Resource.LoadAssetAsync<SkillDisplayData>(location, CancellationToken.None);
         }
 
 
         void TestEvent1()
         {
-            Log.Info($"ÕâÊÇÒ»¸öÍ¨¹ıString ÀàĞÍ×öÏûÏ¢ºÅµÄÊÂ¼ş");
+            Log.Info($"è¿™æ˜¯ä¸€ä¸ªé€šè¿‡String ç±»å‹åšæ¶ˆæ¯å·çš„äº‹ä»¶");
         }
 
         void TestEvent2(int a)
         {
-            Log.Info($"{a}ÕâÊÇÒ»¸öÍ¨¹ıInt ÀàĞÍ×öÏûÏ¢ºÅµÄÊÂ¼ş");
+            Log.Info($"{a}è¿™æ˜¯ä¸€ä¸ªé€šè¿‡Int ç±»å‹åšæ¶ˆæ¯å·çš„äº‹ä»¶");
         }
 
         private void SaySomeThings()
         {
-            //·¢ËÍÊÂ¼şÁ÷
-            GameEvent.Send("TEngineºÜºÃÓÃ");
+            //å‘é€äº‹ä»¶æµ
+            GameEvent.Send("TEngineå¾ˆå¥½ç”¨");
             GameEvent.Send(a, 1444);
         }
 
@@ -81,13 +81,13 @@ namespace GameLogic
         {
             base.RegisterEvent();
 
-            //×Ö·û´®×ª»»Îªint ÀàĞÍµÄ±äÁ¿;
-            a = RuntimeId.ToRuntimeId("µÚÒ»¸ö");
+            //å­—ç¬¦ä¸²è½¬æ¢ä¸ºint ç±»å‹çš„å˜é‡;
+            a = RuntimeId.ToRuntimeId("ç¬¬ä¸€ä¸ª");
 
 
-            //Ìí¼ÓÊÂ¼ş¼àÌıstring
-            GameEvent.AddEventListener("TEngineºÜºÃÓÃ", TestEvent1);
-            //Ìí¼ÓÊÂ¼ş¼àÌıint ÊÂ¼şID
+            //æ·»åŠ äº‹ä»¶ç›‘å¬string
+            GameEvent.AddEventListener("TEngineå¾ˆå¥½ç”¨", TestEvent1);
+            //æ·»åŠ äº‹ä»¶ç›‘å¬int äº‹ä»¶ID
             GameEvent.AddEventListener<int>(a, TestEvent2);
         }
 

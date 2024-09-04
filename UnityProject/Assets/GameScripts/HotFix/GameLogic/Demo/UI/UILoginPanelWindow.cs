@@ -127,8 +127,7 @@ namespace GameLogic
                             AssetDatabase.Refresh();
                         }
                     }
-                    GameModule.Scene.LoadScene("PlayScence", LoadSceneMode.Single);
-                    GameModule.UI.CloseUI<UILoginPanelWindow>();
+                    GameModule.Procedure.RestartProcedure(new OnEnterPlaySceneProcedure());
                     ; break;
                 case 1: Log.Error("·þÎñÆ÷Î´¿ªÆô"); ; break;
                 case 2:

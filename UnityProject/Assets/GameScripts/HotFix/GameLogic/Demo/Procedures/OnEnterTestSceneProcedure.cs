@@ -47,7 +47,7 @@ namespace GameLogic
             
            GameModule.UI.ShowUI<UILoginPanelWindow>();
         }
-
+      
         protected override void OnLeave(IFsm<IProcedureManager> procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
@@ -56,5 +56,23 @@ namespace GameLogic
         }
     }
 
-
+    public class  OnEnterPlaySceneProcedure : ProcedureBase
+    {
+        protected override void OnInit(IFsm<IProcedureManager> procedureOwner)
+        {
+            base.OnInit(procedureOwner);
+            GameModule.Scene.LoadScene("PlayScence", LoadSceneMode.Single);
+        }
+        protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
+        {
+            base.OnEnter(procedureOwner);
+           
+            GameModule.UI.ShowUI<UIMainWindow>();
+        }
+        protected override void OnLeave(IFsm<IProcedureManager> procedureOwner, bool isShutdown)
+        {
+            base.OnLeave(procedureOwner, isShutdown);
+            GameModule.UI.CloseUI<UIMainWindow>();
+        }
+    }
 }
